@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\BPMeasurement.props" />
+</Project>

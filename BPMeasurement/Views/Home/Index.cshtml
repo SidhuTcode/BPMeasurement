@@ -1,0 +1,65 @@
+﻿@model List<BloodMeasurement>
+@{
+    ViewData["Title"] = "All Measurment";
+}
+
+<div class="mb-2">
+    <a asp-controller="BP" asp-action="Add">Add New BP Measurment</a> | <a asp-controller="BP" asp-action="BPCategory">Information on BP Measurements</a>
+</div>
+
+<table class="table table-bordered table-striped">
+    <thead>
+        <tr>
+            <th>Readings</th>
+            <th>Category</th>
+            <th>Position</th> 
+            <th>Date Taken</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var measurement in Model)
+        {
+            <tr>
+                <td style ="color: @GetCategoryColor(measurement.Category)">@measurement.Systolic/@measurement.Diastolic</td>
+                 <td style="color: @GetCategoryColor(measurement.Category)">@measurement.Category</td>
+
+                <td>@measurement.Position.Name</td>
+
+                <td> @measurement.Date</td>
+
+                @* <div class="form-group">
+                    <label for="date">Measurement Date</label>
+                    <input type="text" id="date" class="datepicker form-control" />
+                </div> *@
+
+                <td>
+                    <a asp-controller="BP" asp-action="Edit"
+                       asp-route-id="@measurement.BPId">Edit</a>
+                    <a asp-controller="BP" asp-action="Delete"
+                       asp-route-id="@measurement.BPId">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+@functions {
+    string GetCategoryColor(string category)
+    {
+        switch (category)
+        {
+            case "Normal":
+                return "darkgreen";
+            case "Elevated":
+                return "blue";
+            case "Hypertension Stage 1":
+                return "orange";
+            case "Hypertension Stage 2":
+                return "orangered";
+            case "Hypertensive Crisis":
+                return "darkred";
+            default:
+                return "black"; // Default color if category is not recognized
+        }
+    }
+}

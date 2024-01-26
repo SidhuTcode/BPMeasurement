@@ -1,0 +1,11 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\BPMeasurement",
+    "\\BPMeasurement\\Migrations",
+    "\\BPMeasurement\\Views",
+    "\\BPMeasurement\\Views\\Home"
+  ],
+  "SelectedNode": "\\BPMeasurement\\Views\\Home\\Index.cshtml",
+  "PreviewInSolutionExplorer": false
+}
